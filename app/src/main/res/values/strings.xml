@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">FMBA-MOBILE</string>
+    <string name="usuario">Usuário</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="ordemServico">Ordem de Servico</string>
+    <string name="numeroOrdemServico">Número da Ordem de Serviço</string>
+    <string name="consultaNumeroOrdemServico">Filtrar pelo Número</string>
+    <string name="numero">Número</string>
+    <string name="veiculo">Veiculo</string>
+    <string name="placa">Placa</string>
+    <string name="cliente">Nome do Cliente</string>
+    <string name="dataInicio">Data Início</string>
+    <string name="dataFinal">Data Final</string>
+    <string name="ok">Ok</string>
+    <string name="nao">Não</string>
+    <string name="sim">Sim</string>
+    <string name="deleteOrdemServico">Remover Ordem de Servico</string>
+</resources>

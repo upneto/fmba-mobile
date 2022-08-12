@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.DetalheOrdemServicoActivity">
+
+    <TextView
+        android:id="@+id/lblNumero"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/numero"
+        android:textAlignment="viewEnd"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtNumero"
+        app:layout_constraintEnd_toStartOf="@+id/txtNumero"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtNumero" />
+
+    <TextView
+        android:id="@+id/txtNumero"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblNumero"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lblVeiculo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/veiculo"
+        android:textAlignment="viewEnd"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtVeiculo"
+        app:layout_constraintEnd_toStartOf="@+id/txtVeiculo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtVeiculo"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtVeiculo"
+        android:layout_width="250dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblVeiculo"
+        app:layout_constraintTop_toBottomOf="@+id/txtNumero" />
+
+    <TextView
+        android:id="@+id/lblPlaca"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/placa"
+        android:textAlignment="viewEnd"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPlaca"
+        app:layout_constraintEnd_toStartOf="@+id/txtPlaca"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtPlaca"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtPlaca"
+        android:layout_width="250dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblPlaca"
+        app:layout_constraintTop_toBottomOf="@+id/txtVeiculo" />
+
+    <TextView
+        android:id="@+id/lblCliente"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/cliente"
+        android:textAlignment="viewEnd"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtCliente"
+        app:layout_constraintEnd_toStartOf="@+id/txtCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtCliente"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtCliente"
+        android:layout_width="250dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblCliente"
+        app:layout_constraintTop_toBottomOf="@+id/txtPlaca" />
+
+    <TextView
+        android:id="@+id/lblDataInicio"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/dataInicio"
+        android:textAlignment="viewEnd"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDataInicio"
+        app:layout_constraintEnd_toStartOf="@+id/txtDataInicio"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtDataInicio"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtDataInicio"
+        android:layout_width="250dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblDataInicio"
+        app:layout_constraintTop_toBottomOf="@+id/txtCliente" />
+
+    <TextView
+        android:id="@+id/lblDataFim"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/dataFinal"
+        android:textAlignment="viewEnd"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDataFinal"
+        app:layout_constraintEnd_toStartOf="@+id/txtDataFinal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtDataFinal"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/txtDataFinal"
+        android:layout_width="250dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblDataFim"
+        app:layout_constraintTop_toBottomOf="@+id/txtDataInicio" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:contentDescription="@string/deleteOrdemServico"
+        app:backgroundTint="@color/design_default_color_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDataFinal"
+        app:rippleColor="#FFFFFF"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txtCodigoOrdemServico"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:layout_alignParentTop="true"
+        android:text="123456789"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPlacaOrdemServico"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtCodigoOrdemServico"
+        android:text="XPTO1234"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toEndOf="@+id/txtCodigoOrdemServico"
+        app:layout_constraintTop_toTopOf="@+id/txtCodigoOrdemServico" />
+
+    <TextView
+        android:id="@+id/txtVeiculoOrdemServico"
+        android:layout_width="230dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/txtPlacaOrdemServico"
+        android:text="New Fiesta 2016"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txtCodigoOrdemServico"
+        app:layout_constraintStart_toEndOf="@+id/txtPlacaOrdemServico"
+        app:layout_constraintTop_toTopOf="@+id/txtCodigoOrdemServico" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
