@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.ManutencaoOrdemServicoActivity">
+    tools:context=".ui.activity.ManutencaoOrdemServicoActivity"
+    android:theme="@android:style/Theme.Light"
+    android:background="#ffffff" >
 
 </androidx.constraintlayout.widget.ConstraintLayout>

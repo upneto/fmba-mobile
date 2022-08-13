@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.DetalheOrdemServicoActivity">
+    tools:context=".ui.activity.DetalheOrdemServicoActivity"
+    android:theme="@android:style/Theme.Light"
+    android:background="#ffffff" >
 
     <TextView
         android:id="@+id/lblNumero"

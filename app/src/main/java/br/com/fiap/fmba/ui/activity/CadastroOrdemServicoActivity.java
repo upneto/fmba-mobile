@@ -53,7 +53,7 @@ public class CadastroOrdemServicoActivity extends AbstractActivity {
                 ordem.setDataFinal(txtDataFinal.getText().toString());
                 ordemServico.incluir(ordem);
 
-                Toast.makeText(CadastroOrdemServicoActivity.this, 
+                Toast.makeText(CadastroOrdemServicoActivity.this,
                         "Ordem de Servico incluida com sucesso!",
                         Toast.LENGTH_SHORT).show();
             }
