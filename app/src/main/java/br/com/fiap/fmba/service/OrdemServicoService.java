@@ -16,7 +16,7 @@ public class OrdemServicoService extends AbstractService implements IOrdemServic
     }
 
     @Override
-    public void getById(long id) throws Exception {
+    public void getById(String placa, ListaOrdemServicoAdapter listAdapter) throws Exception {
 
     }
 
@@ -31,7 +31,7 @@ public class OrdemServicoService extends AbstractService implements IOrdemServic
     }
 
     @Override
-    public void delete(long id) throws Exception {
+    public void delete(String placa) throws Exception {
 
     }
 }

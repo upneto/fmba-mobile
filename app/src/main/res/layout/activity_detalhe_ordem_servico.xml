@@ -9,31 +9,6 @@
     android:background="#ffffff" >
 
     <TextView
-        android:id="@+id/lblNumero"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/numero"
-        android:textAlignment="viewEnd"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtNumero"
-        app:layout_constraintEnd_toStartOf="@+id/txtNumero"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtNumero" />
-
-    <TextView
-        android:id="@+id/txtNumero"
-        android:layout_width="250dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lblNumero"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/lblVeiculo"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -52,12 +27,12 @@
         android:layout_width="250dp"
         android:layout_height="22dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/lblVeiculo"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumero" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/lblPlaca"

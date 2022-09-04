@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public class OrdemServico {
 
-    private long codigo;
     private String dataInicio;
     private String dataFinal;
     private String nomeCliente;
@@ -16,14 +15,13 @@ public class OrdemServico {
         super();
     }
 
-    public OrdemServico(int codigo) {
+    public OrdemServico(String placa) {
         super();
-        this.codigo = codigo;
+        this.placa = placa;
     }
 
-    public OrdemServico(int codigo, String dataInicio, String dataFinal, String nomeCliente, String veiculo, String placa) {
+    public OrdemServico(String dataInicio, String dataFinal, String nomeCliente, String veiculo, String placa) {
         super();
-        this.codigo = codigo;
         this.dataInicio = dataInicio;
         this.dataFinal = dataFinal;
         this.nomeCliente = nomeCliente;
@@ -36,23 +34,15 @@ public class OrdemServico {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrdemServico that = (OrdemServico) o;
-        return codigo == that.codigo;
+        return placa.equals(that.placa);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigo);
+        return Objects.hash(placa);
     }
 
     // ---- Getters and Setter
-
-    public long getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(long codigo) {
-        this.codigo = codigo;
-    }
 
     public String getDataInicio() {
         return dataInicio;

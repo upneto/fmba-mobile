@@ -10,36 +10,26 @@
     android:background="#ffffff" >
 
     <TextView
-        android:id="@+id/txtCodigoOrdemServico"
+        android:id="@+id/txtPlacaOrdemServico"
         android:layout_width="80dp"
         android:layout_height="0dp"
         android:layout_alignParentTop="true"
-        android:text="123456789"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Placa"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtPlacaOrdemServico"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtCodigoOrdemServico"
-        android:text="XPTO1234"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toEndOf="@+id/txtCodigoOrdemServico"
-        app:layout_constraintTop_toTopOf="@+id/txtCodigoOrdemServico" />
-
-    <TextView
         android:id="@+id/txtVeiculoOrdemServico"
-        android:layout_width="230dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@+id/txtPlacaOrdemServico"
-        android:text="New Fiesta 2016"
+        android:text="Veiculo"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/txtCodigoOrdemServico"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPlacaOrdemServico"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txtPlacaOrdemServico"
-        app:layout_constraintTop_toTopOf="@+id/txtCodigoOrdemServico" />
+        app:layout_constraintTop_toTopOf="@+id/txtPlacaOrdemServico" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

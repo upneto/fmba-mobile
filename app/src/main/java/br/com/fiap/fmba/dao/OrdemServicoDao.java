@@ -1,10 +1,5 @@
 package br.com.fiap.fmba.dao;
 
-import android.widget.ArrayAdapter;
-
-import java.util.AbstractMap;
-import java.util.List;
-
 import br.com.fiap.fmba.ui.activity.adapter.ListaOrdemServicoAdapter;
 import br.com.fiap.fmba.usecase.ordemservico.IOrdemServico;
 import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
@@ -25,9 +20,8 @@ public class OrdemServicoDao extends AbstractDao implements IOrdemServico {
     }
 
     @Override
-    public void getById(long id) throws Exception {
-        super.getById(OrdemServico.class,
-                new AbstractMap.SimpleEntry<String, Object>("codigo", id));
+    public void getById(String placa, ListaOrdemServicoAdapter listAdapter) throws Exception {
+        super.getById(new OrdemServico(placa), listAdapter);
     }
 
     @Override
@@ -41,7 +35,7 @@ public class OrdemServicoDao extends AbstractDao implements IOrdemServico {
     }
 
     @Override
-    public void delete(long id) throws Exception {
-        super.delete(new AbstractMap.SimpleEntry<String, Object>("codigo", id));
+    public void delete(String placa) throws Exception {
+        super.delete(new OrdemServico(placa));
     }
 }

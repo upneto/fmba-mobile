@@ -26,7 +26,6 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
     private ListView listOrdemServico = null;
     private GestaoOrdemServico ordemServico = null;
     private ListaOrdemServicoAdapter adapter;
-    List<OrdemServico> ordensServico = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,29 +50,31 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
 
             @Override
             public void onClick(View view) {
-                TextView txtNumeroOrdem = findViewById(R.id.txtFiltro);
-                Integer numeroOrdem = txtNumeroOrdem.getText().length() == 0
+                TextView txtPlaca = findViewById(R.id.txtFiltro);
+                preencheLista(txtPlaca.getText().toString().isEmpty()
                         ? null
-                        : Integer.parseInt(txtNumeroOrdem.getText().toString());
-
-                preencheLista(numeroOrdem);
+                        : txtPlaca.getText().toString());
             }
         });
     }
 
-    private void preencheLista(Integer numeroOrdemServico) {
+    private void preencheLista(String placa) {
         try {
-            this.ordemServico.consultarTodos(this.adapter);
+            if(placa != null) {
+                this.ordemServico.consultarPorPlaca(placa, this.adapter);
+            }
+            else {
+                this.ordemServico.consultarTodos(this.adapter);
+            }
             this.listOrdemServico.setAdapter(this.adapter);
             this.listOrdemServico.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    OrdemServico ordemServico = ordensServico.get(position);
+                    OrdemServico ordemServico = adapter.getItem(position);
 
                     Intent intent = new Intent(ListaOrdemServicoActivity.this, DetalheOrdemServicoActivity.class);
-                    intent.putExtra("NUMERO", ordemServico.getCodigo());
                     intent.putExtra("VEICULO", ordemServico.getVeiculo());
                     intent.putExtra("PLACA", ordemServico.getPlaca());
                     intent.putExtra("CLIENTE", ordemServico.getNomeCliente());

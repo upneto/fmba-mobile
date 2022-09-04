@@ -2,8 +2,6 @@ package br.com.fiap.fmba.usecase.ordemservico;
 
 import android.content.Context;
 
-import java.util.List;
-
 import br.com.fiap.fmba.ui.activity.adapter.ListaOrdemServicoAdapter;
 import br.com.fiap.fmba.usecase.AbstractUseCase;
 import br.com.fiap.fmba.usecase.FactoryImpl;
@@ -24,6 +22,10 @@ public class GestaoOrdemServico extends AbstractUseCase<GestaoOrdemServico>  {
         this.ordemServico.getAll(listAdapter);
     }
 
+    public void consultarPorPlaca(String placa, ListaOrdemServicoAdapter listAdapter) throws Exception {
+        this.ordemServico.getById(placa, listAdapter);
+    }
+
     public void incluir(OrdemServico novaOrdemServico) throws Exception {
         this.ordemServico.insert(novaOrdemServico);
     }
@@ -32,7 +34,7 @@ public class GestaoOrdemServico extends AbstractUseCase<GestaoOrdemServico>  {
         this.ordemServico.update(ordemServico);
     }
 
-    public void excluir(int id) throws Exception {
-        this.ordemServico.delete(id);
+    public void excluir(String placa) throws Exception {
+        this.ordemServico.delete(placa);
     }
 }

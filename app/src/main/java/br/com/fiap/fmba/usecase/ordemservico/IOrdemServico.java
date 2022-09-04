@@ -8,11 +8,11 @@ public interface IOrdemServico {
 
     void getAll(ListaOrdemServicoAdapter listAdapter) throws Exception;
 
-    void getById(long id) throws Exception;
+    void getById(String placa, ListaOrdemServicoAdapter listAdapter) throws Exception;
 
     void insert(OrdemServico ordemServico) throws Exception;
 
     void update(OrdemServico ordemServico) throws Exception;
 
-    void delete(long id) throws Exception;
+    void delete(String placa) throws Exception;
 }
