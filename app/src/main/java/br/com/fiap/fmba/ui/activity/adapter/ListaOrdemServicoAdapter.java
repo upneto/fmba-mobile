@@ -5,20 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.android.material.snackbar.Snackbar;
-
 import java.util.List;
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.model.OrdemServicoVO;
+import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
 
-public class ListaOrdemServicoAdapter extends ArrayAdapter<OrdemServicoVO> {
+public class ListaOrdemServicoAdapter extends ArrayAdapter<OrdemServico> {
 
     private int lastPosition = -1;
 
@@ -29,14 +26,14 @@ public class ListaOrdemServicoAdapter extends ArrayAdapter<OrdemServicoVO> {
         TextView txtVeiculoOrdemServico;
     }
 
-    public ListaOrdemServicoAdapter(final Context context, final List<OrdemServicoVO> ordensServico) {
+    public ListaOrdemServicoAdapter(final Context context, final List<OrdemServico> ordensServico) {
         super(context, R.layout.ordem_servico_row_item, ordensServico);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        OrdemServicoVO dataModel = getItem(position);
+        OrdemServico dataModel = getItem(position);
 
         ViewHolder viewHolder;
 

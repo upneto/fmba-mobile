@@ -1,14 +1,10 @@
 package br.com.fiap.fmba.ui.activity;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -20,17 +16,17 @@ import java.util.Arrays;
 import java.util.List;
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.model.OrdemServicoVO;
+import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
 import br.com.fiap.fmba.resources.exception.ServiceException;
 import br.com.fiap.fmba.ui.activity.adapter.ListaOrdemServicoAdapter;
-import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
+import br.com.fiap.fmba.usecase.ordemservico.GestaoOrdemServico;
 
 public class ListaOrdemServicoActivity extends AbstractActivity {
 
     private ListView listOrdemServico = null;
-    private OrdemServico ordemServico = null;
+    private GestaoOrdemServico ordemServico = null;
     private ListaOrdemServicoAdapter adapter;
-    List<OrdemServicoVO> ordensServico = new ArrayList<>();
+    List<OrdemServico> ordensServico = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +35,7 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
         super.setTitle("Ordens de Serviço");
 
         this.listOrdemServico = findViewById(R.id.listOrdemServico);
-        this.ordemServico = new OrdemServico(this);
+        this.ordemServico = new GestaoOrdemServico(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -70,8 +66,8 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
             if(numeroOrdemServico == null) {
                 this.adapter = new ListaOrdemServicoAdapter(this, ordensServico);
             } else {
-                OrdemServicoVO ordemEncontrada = null;
-                for(OrdemServicoVO item : this.ordensServico) {
+                OrdemServico ordemEncontrada = null;
+                for(OrdemServico item : this.ordensServico) {
                     if(item.getCodigo() == numeroOrdemServico) {
                         ordemEncontrada = item;
                         break;
@@ -93,7 +89,7 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    OrdemServicoVO ordemServico = ordensServico.get(position);
+                    OrdemServico ordemServico = ordensServico.get(position);
 
                     Intent intent = new Intent(ListaOrdemServicoActivity.this, DetalheOrdemServicoActivity.class);
                     intent.putExtra("NUMERO", ordemServico.getCodigo());

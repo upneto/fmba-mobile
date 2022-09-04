@@ -1,16 +1,13 @@
 package br.com.fiap.fmba.ui.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.model.OrdemServicoVO;
 import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
+import br.com.fiap.fmba.usecase.ordemservico.GestaoOrdemServico;
 
 public class CadastroOrdemServicoActivity extends AbstractActivity {
 
@@ -20,7 +17,7 @@ public class CadastroOrdemServicoActivity extends AbstractActivity {
     private EditText txtDataInicio = null;
     private EditText txtDataFinal = null;
 
-    private OrdemServico ordemServico = null;
+    private GestaoOrdemServico ordemServico = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +33,7 @@ public class CadastroOrdemServicoActivity extends AbstractActivity {
         this.txtDataFinal = findViewById(R.id.txtNewDataFim);
         this.txtDataFinal.addTextChangedListener(super.getDateMask("##/##/####", txtDataFinal));
 
-        this.ordemServico = new OrdemServico(this);
+        this.ordemServico = new GestaoOrdemServico(this);
 
         this.buildBotaoCadastrar();
     }
@@ -45,7 +42,7 @@ public class CadastroOrdemServicoActivity extends AbstractActivity {
         findViewById(R.id.btnCadastrarOrdemServico).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                OrdemServicoVO ordem = new OrdemServicoVO();
+                OrdemServico ordem = new OrdemServico();
                 ordem.setVeiculo(txtVeiculo.getText().toString());
                 ordem.setPlaca(txtPlaca.getText().toString());
                 ordem.setNomeCliente(txtCliente.getText().toString());

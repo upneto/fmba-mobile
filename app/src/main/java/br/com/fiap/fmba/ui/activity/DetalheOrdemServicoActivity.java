@@ -1,11 +1,8 @@
 package br.com.fiap.fmba.ui.activity;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -13,7 +10,7 @@ import android.widget.Toast;
 
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
+import br.com.fiap.fmba.usecase.ordemservico.GestaoOrdemServico;
 
 public class DetalheOrdemServicoActivity extends AbstractActivity {
 
@@ -24,7 +21,7 @@ public class DetalheOrdemServicoActivity extends AbstractActivity {
     private TextView txtDataInicio = null;
     private TextView txtDataFinal = null;
 
-    private OrdemServico ordemServico = null;
+    private GestaoOrdemServico ordemServico = null;
 
     private AlertDialog.Builder confirmDialog;
 
@@ -41,7 +38,7 @@ public class DetalheOrdemServicoActivity extends AbstractActivity {
         this.txtDataInicio = findViewById(R.id.txtDataInicio);
         this.txtDataFinal = findViewById(R.id.txtDataFinal);
 
-        this.ordemServico = new OrdemServico(this);
+        this.ordemServico = new GestaoOrdemServico(this);
 
         this.buildDeleteButton();
         this.buildConfirmDialog();

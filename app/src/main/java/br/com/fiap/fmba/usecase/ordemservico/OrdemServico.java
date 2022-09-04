@@ -1,33 +1,96 @@
 package br.com.fiap.fmba.usecase.ordemservico;
 
-import android.content.Context;
 
-import java.util.List;
+import java.util.Objects;
 
-import br.com.fiap.fmba.model.OrdemServicoVO;
-import br.com.fiap.fmba.resources.exception.ServiceException;
-import br.com.fiap.fmba.service.ServiceFactory;
-import br.com.fiap.fmba.service.ordemservico.IOrdemServicoService;
-import br.com.fiap.fmba.usecase.AbstractUseCase;
+public class OrdemServico {
 
-public class OrdemServico extends AbstractUseCase<OrdemServico>  {
+    private long codigo;
+    private String dataInicio;
+    private String dataFinal;
+    private String nomeCliente;
+    private String veiculo;
+    private String placa;
 
-    private IOrdemServicoService ordemServicoService = null;
-
-    public OrdemServico(Context context) {
-        super(context);
-        this.ordemServicoService = ServiceFactory.getInstace(IOrdemServicoService.class);
+    public OrdemServico() {
+        super();
     }
 
-    public List<OrdemServicoVO> consultarTodos() throws ServiceException {
-        return this.ordemServicoService.consultarTodos();
+    public OrdemServico(int codigo) {
+        super();
+        this.codigo = codigo;
     }
 
-    public void incluir(OrdemServicoVO novaOrdemServico) {
-
+    public OrdemServico(int codigo, String dataInicio, String dataFinal, String nomeCliente, String veiculo, String placa) {
+        super();
+        this.codigo = codigo;
+        this.dataInicio = dataInicio;
+        this.dataFinal = dataFinal;
+        this.nomeCliente = nomeCliente;
+        this.veiculo = veiculo;
+        this.placa = placa;
     }
 
-    public void excluir(int id) {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrdemServico that = (OrdemServico) o;
+        return codigo == that.codigo;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigo);
+    }
+
+    // ---- Getters and Setter
+
+    public long getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(long codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public String getDataFinal() {
+        return dataFinal;
+    }
+
+    public void setDataFinal(String dataFinal) {
+        this.dataFinal = dataFinal;
+    }
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
+    public String getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(String veiculo) {
+        this.veiculo = veiculo;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
     }
 }

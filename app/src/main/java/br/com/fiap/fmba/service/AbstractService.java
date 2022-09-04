@@ -59,7 +59,7 @@ public abstract class AbstractService {
     }
 
     public void doPost(String url, Object body) throws ServiceException {
-        this.doPost(null, body, false);
+        this.doPost(null, body);
     }
 
     public <T> T doPost(String url, T payload, boolean getResponse) throws ServiceException {
