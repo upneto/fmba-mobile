@@ -7,6 +7,14 @@ import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
 
 public class OrdemServicoDao extends AbstractDao implements IOrdemServico {
 
+    public OrdemServicoDao() {
+        super("ORDEM_SERVICO");
+    }
+
+    public OrdemServicoDao(String DATABASE) {
+        super(DATABASE);
+    }
+
     @Override
     public List<OrdemServico> getAll() throws Exception {
         return null;
