@@ -79,8 +79,16 @@ public class DetalheOrdemServicoActivity extends AbstractActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        ordemServico.excluir(Integer.parseInt(txtNumero.getText().toString()));
-                        Toast.makeText(DetalheOrdemServicoActivity.this, "Ordem se Serviço excluida com sucesso!", Toast.LENGTH_SHORT).show();
+                        try {
+                            ordemServico.excluir(Integer.parseInt(txtNumero.getText().toString()));
+                        } catch (Exception e) {
+                            Toast.makeText(DetalheOrdemServicoActivity.this,
+                                    e.getMessage(),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        Toast.makeText(DetalheOrdemServicoActivity.this,
+                                "Ordem se Serviço excluida com sucesso!",
+                                Toast.LENGTH_SHORT).show();
                         DetalheOrdemServicoActivity.this.finish();
                     }
                 }).setNegativeButton(R.string.nao, new DialogInterface.OnClickListener() {

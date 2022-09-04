@@ -103,7 +103,7 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
                 }
             });
 
-        } catch (ServiceException e) {
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }

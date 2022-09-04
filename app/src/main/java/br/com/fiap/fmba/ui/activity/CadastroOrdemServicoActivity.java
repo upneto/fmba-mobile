@@ -48,10 +48,14 @@ public class CadastroOrdemServicoActivity extends AbstractActivity {
                 ordem.setNomeCliente(txtCliente.getText().toString());
                 ordem.setDataInicio(txtDataInicio.getText().toString());
                 ordem.setDataFinal(txtDataFinal.getText().toString());
-                ordemServico.incluir(ordem);
+                try {
+                    ordemServico.incluir(ordem);
+                } catch (Exception e) {
+                    Toast.makeText(CadastroOrdemServicoActivity.this, e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
 
-                Toast.makeText(CadastroOrdemServicoActivity.this,
-                        "Ordem de Servico incluida com sucesso!",
+                Toast.makeText(CadastroOrdemServicoActivity.this, "Ordem de Servico incluida com sucesso!",
                         Toast.LENGTH_SHORT).show();
             }
         });
