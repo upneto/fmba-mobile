@@ -1,8 +1,11 @@
 package br.com.fiap.fmba.dao;
 
+import android.widget.ArrayAdapter;
+
 import java.util.AbstractMap;
 import java.util.List;
 
+import br.com.fiap.fmba.ui.activity.adapter.ListaOrdemServicoAdapter;
 import br.com.fiap.fmba.usecase.ordemservico.IOrdemServico;
 import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
 
@@ -17,13 +20,13 @@ public class OrdemServicoDao extends AbstractDao implements IOrdemServico {
     }
 
     @Override
-    public List<OrdemServico> getAll() throws Exception {
-        return super.getAll(OrdemServico.class);
+    public void getAll(ListaOrdemServicoAdapter listAdapter) throws Exception {
+        super.getAll(OrdemServico.class, listAdapter);
     }
 
     @Override
-    public OrdemServico getById(long id) throws Exception {
-        return super.getById(OrdemServico.class,
+    public void getById(long id) throws Exception {
+        super.getById(OrdemServico.class,
                 new AbstractMap.SimpleEntry<String, Object>("codigo", id));
     }
 

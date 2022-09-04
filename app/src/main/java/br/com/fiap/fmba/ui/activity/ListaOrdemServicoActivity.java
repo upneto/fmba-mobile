@@ -36,6 +36,7 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
 
         this.listOrdemServico = findViewById(R.id.listOrdemServico);
         this.ordemServico = new GestaoOrdemServico(this);
+        this.adapter = new ListaOrdemServicoAdapter(this, new ArrayList<OrdemServico>());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -62,27 +63,7 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
 
     private void preencheLista(Integer numeroOrdemServico) {
         try {
-            this.ordensServico = this.ordemServico.consultarTodos();
-            if(numeroOrdemServico == null) {
-                this.adapter = new ListaOrdemServicoAdapter(this, ordensServico);
-            } else {
-                OrdemServico ordemEncontrada = null;
-                for(OrdemServico item : this.ordensServico) {
-                    if(item.getCodigo() == numeroOrdemServico) {
-                        ordemEncontrada = item;
-                        break;
-                    }
-                }
-
-                if(ordemEncontrada != null) {
-                    this.adapter = new ListaOrdemServicoAdapter(this, Arrays.asList(ordemEncontrada));
-                }
-                else {
-                    Toast.makeText(this, "Ordem de Serviço não encontrada!", Toast.LENGTH_SHORT).show();
-                    this.adapter = new ListaOrdemServicoAdapter(this, ordensServico);
-                }
-            }
-
+            this.ordemServico.consultarTodos(this.adapter);
             this.listOrdemServico.setAdapter(this.adapter);
             this.listOrdemServico.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

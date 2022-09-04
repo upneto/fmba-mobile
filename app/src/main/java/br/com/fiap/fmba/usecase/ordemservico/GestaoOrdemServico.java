@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import br.com.fiap.fmba.ui.activity.adapter.ListaOrdemServicoAdapter;
 import br.com.fiap.fmba.usecase.AbstractUseCase;
 import br.com.fiap.fmba.usecase.FactoryImpl;
 
@@ -19,8 +20,8 @@ public class GestaoOrdemServico extends AbstractUseCase<GestaoOrdemServico>  {
         this.ordemServico = FactoryImpl.newInstanceOf(IOrdemServico.class);
     }
 
-    public List<OrdemServico> consultarTodos() throws Exception {
-        return this.ordemServico.getAll();
+    public void consultarTodos(ListaOrdemServicoAdapter listAdapter) throws Exception {
+        this.ordemServico.getAll(listAdapter);
     }
 
     public void incluir(OrdemServico novaOrdemServico) throws Exception {

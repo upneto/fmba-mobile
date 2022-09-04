@@ -1,5 +1,7 @@
 package br.com.fiap.fmba.dao;
 
+import android.widget.ArrayAdapter;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,15 +31,14 @@ public abstract class AbstractDao {
         this.dataBase = DATABASE;
     }
 
-    public <T> List<T> getAll(Class<T> responseType) throws DaoException {
-        final List<T> list = new ArrayList<T>();
+    public <T> void getAll(Class<T> responseType, ArrayAdapter<T> listaAdapter) throws DaoException {
         final List<String> errors = new ArrayList<String>();
+        listaAdapter.clear();
         this.myRef.child(this.dataBase).addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                T value = dataSnapshot.getValue(responseType);
-                list.add(value);
+                listaAdapter.add(dataSnapshot.getValue(responseType));
             }
 
             @Override
@@ -49,8 +50,6 @@ public abstract class AbstractDao {
         if(!errors.isEmpty()) {
             throw new DaoException(errors.get(0));
         }
-
-        return list;
     }
 
     public <T> T getById(Class<T> responseType, Map.Entry<String, Object> entry) throws DaoException {
