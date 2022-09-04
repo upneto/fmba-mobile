@@ -4,15 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.resources.exception.LoginException;
-import br.com.fiap.fmba.usecase.login.Login;
 
 public class MainActivity extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,7 +28,18 @@ public class MainActivity extends AppCompatActivity {
         super.setContentView(R.layout.activity_main);
         super.setTitle("FMBA");
 
+        this.mAuth = FirebaseAuth.getInstance();
+
         this.preparaBotaoLogin();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            this.mAuth = FirebaseAuth.getInstance();
+        }
     }
 
     @Override
@@ -41,25 +60,20 @@ public class MainActivity extends AppCompatActivity {
                 String usuario = txtUsuario.getText().toString();
                 String senha = txtSenha.getText().toString();
 
-                Login login = Login.getInstance(MainActivity.this, usuario, senha);
-
-                // Valida usuario digitado
-                if(!login.validaUsuario().isValid()) {
-                    txtUsuario.setError("Usuário Inválido");
-                    txtUsuario.setText(new String());
-                }
-
-                // Valida senha digitada
-                if(!login.validaSenha().isValid()) {
-                    txtSenha.setError("Senha Inválida");
-                }
-
                 // Efetua login
                 try {
-                    if(login.executa().isValid()) {
-                        startActivity(new Intent(MainActivity.this, ListaOrdemServicoActivity.class));
-                    }
-                } catch (LoginException e) {
+                    mAuth.signInWithEmailAndPassword(usuario, senha).addOnCompleteListener(MainActivity.this,
+                            new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        startActivity(new Intent(MainActivity.this, ListaOrdemServicoActivity.class));
+                                    } else {
+                                        Toast.makeText(MainActivity.this, "Email ou senha invalidos!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                } catch (Exception e) {
                     txtUsuario.setText(new String());
                 }
 

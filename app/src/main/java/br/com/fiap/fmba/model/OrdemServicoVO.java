@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class OrdemServicoVO {
 
-    private int codigo;
+    private long codigo;
     private String dataInicio;
     private String dataFinal;
     private String nomeCliente;
@@ -44,13 +44,13 @@ public class OrdemServicoVO {
         return Objects.hash(codigo);
     }
 
-    // ---- Geters and Setter
+    // ---- Getters and Setter
 
-    public int getCodigo() {
+    public long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(long codigo) {
         this.codigo = codigo;
     }
 
