@@ -1,7 +1,10 @@
 package br.com.fiap.fmba.dao;
 
+import android.content.Context;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,13 +21,17 @@ import br.com.fiap.fmba.resources.exception.DaoException;
 
 public abstract class AbstractDao {
 
+    protected Context context = null;
     protected FirebaseDatabase database = null;
     protected DatabaseReference myRef = null;
     protected String dataBase;
 
-    public AbstractDao() { }
+    public AbstractDao(final Context context) {
+        this.context = context;
+    }
 
-    public AbstractDao (final String DATABASE) {
+    public AbstractDao (final Context context, final String DATABASE) {
+        this.context = context;
         this.database = FirebaseDatabase.getInstance();
         this.myRef = this.database.getReference("FMBA");
         this.dataBase = DATABASE;
@@ -83,35 +90,11 @@ public abstract class AbstractDao {
     }
 
     public <T> void insert(T objToInclude) throws DaoException {
-        final List<String> errors = new ArrayList<String>();
-        this.myRef.child(this.dataBase).addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                boolean exist = false;
-                for (DataSnapshot item : dataSnapshot.getChildren()) {
-                    T value = (T) item.getValue(objToInclude.getClass());
-                    if (value != null && value.equals(objToInclude)) {
-                        exist = true;
-                        break;
-                    }
-                }
-                if(exist == false) {
-                    myRef.child(dataBase).push().setValue(objToInclude);
-                }
-                else {
-                    errors.add("Registro já existente!");
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                errors.add(databaseError.getMessage());
-            }
-        });
-
-        if(!errors.isEmpty()) {
-            throw new DaoException(errors.get(0));
+        try {
+            this.myRef.child(this.dataBase).push().setValue(objToInclude);
+            Toast.makeText(context, "Operação realizada com sucesso!", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            throw new DaoException(e);
         }
     }
 
@@ -125,7 +108,9 @@ public abstract class AbstractDao {
                 map.put(field.getName(), field.get(value));
             }
             this.myRef.child(this.dataBase).updateChildren(map);
+            Toast.makeText(context, "Operação realizada com sucesso!", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
+            Toast.makeText(context, "Não foi possível realizar a operação!", Toast.LENGTH_SHORT).show();
             throw new DaoException(e);
         }
     }

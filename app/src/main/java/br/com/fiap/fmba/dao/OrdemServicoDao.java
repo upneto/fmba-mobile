@@ -1,17 +1,19 @@
 package br.com.fiap.fmba.dao;
 
+import android.content.Context;
+
 import br.com.fiap.fmba.ui.activity.adapter.ListaOrdemServicoAdapter;
 import br.com.fiap.fmba.usecase.ordemservico.IOrdemServico;
 import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
 
 public class OrdemServicoDao extends AbstractDao implements IOrdemServico {
 
-    public OrdemServicoDao() {
-        super("ORDEM_SERVICO");
+    public OrdemServicoDao(final Context context) {
+        super(context,"ORDEM_SERVICO");
     }
 
-    public OrdemServicoDao(String DATABASE) {
-        super(DATABASE);
+    public OrdemServicoDao(final Context context, final String DATABASE) {
+        super(context, DATABASE);
     }
 
     @Override

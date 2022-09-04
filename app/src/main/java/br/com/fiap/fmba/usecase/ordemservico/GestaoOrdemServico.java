@@ -15,7 +15,7 @@ public class GestaoOrdemServico extends AbstractUseCase<GestaoOrdemServico>  {
 
     public GestaoOrdemServico(Context context) {
         super(context);
-        this.ordemServico = FactoryImpl.newInstanceOf(IOrdemServico.class);
+        this.ordemServico = FactoryImpl.newInstanceOf(context, IOrdemServico.class);
     }
 
     public void consultarTodos(ListaOrdemServicoAdapter listAdapter) throws Exception {

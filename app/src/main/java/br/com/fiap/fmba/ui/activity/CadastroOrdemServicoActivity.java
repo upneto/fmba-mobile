@@ -54,9 +54,6 @@ public class CadastroOrdemServicoActivity extends AbstractActivity {
                     Toast.makeText(CadastroOrdemServicoActivity.this, e.getMessage(),
                             Toast.LENGTH_SHORT).show();
                 }
-
-                Toast.makeText(CadastroOrdemServicoActivity.this, "Ordem de Servico incluida com sucesso!",
-                        Toast.LENGTH_SHORT).show();
             }
         });
     }

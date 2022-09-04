@@ -77,7 +77,7 @@ public class OrdemServico {
     }
 
     public String getPlaca() {
-        return placa;
+        return placa != null ? placa.toUpperCase() : placa;
     }
 
     public void setPlaca(String placa) {
