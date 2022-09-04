@@ -20,7 +20,7 @@
             android:id="@+id/lblUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/usuario"
+            android:text="@string/email"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -29,8 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/usuario"
-            android:inputType="textPersonName"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
             android:minHeight="48dp" />
 
         <TextView

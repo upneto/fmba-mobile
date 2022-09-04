@@ -17,7 +17,7 @@ public class OrdemServicoService extends AbstractService implements IOrdemServic
     public List<OrdemServicoVO> consultarTodos() throws ServiceException {
 
         List<OrdemServicoVO> lista = new ArrayList<>();
-        for(int i = 1; i <= 10; i++) {
+        for(long i = 1; i <= 10; i++) {
             OrdemServicoVO ordem = new OrdemServicoVO();
             ordem.setCodigo(i);
             ordem.setDataInicio("01/01/2000");

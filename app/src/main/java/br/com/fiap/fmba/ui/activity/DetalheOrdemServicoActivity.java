@@ -51,7 +51,7 @@ public class DetalheOrdemServicoActivity extends AbstractActivity {
     protected void onResume() {
         super.onResume();
         Bundle extras = getIntent().getExtras();
-        int numero = (int) extras.get("NUMERO");
+        long numero = (long) extras.get("NUMERO");
         String veiculo = (String) extras.get("VEICULO");
         String placa = (String) extras.get("PLACA");
         String cliente = (String) extras.get("CLIENTE");

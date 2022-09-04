@@ -16,12 +16,12 @@ public class OrdemServicoVO {
         super();
     }
 
-    public OrdemServicoVO(int codigo) {
+    public OrdemServicoVO(long codigo) {
         super();
         this.codigo = codigo;
     }
 
-    public OrdemServicoVO(int codigo, String dataInicio, String dataFinal, String nomeCliente, String veiculo, String placa) {
+    public OrdemServicoVO(long codigo, String dataInicio, String dataFinal, String nomeCliente, String veiculo, String placa) {
         super();
         this.codigo = codigo;
         this.dataInicio = dataInicio;

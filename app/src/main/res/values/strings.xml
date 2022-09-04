@@ -16,4 +16,5 @@
     <string name="nao">Não</string>
     <string name="sim">Sim</string>
     <string name="deleteOrdemServico">Remover Ordem de Servico</string>
+    <string name="email">E-mail</string>
 </resources>

@@ -18,9 +18,15 @@ import com.google.firebase.auth.FirebaseUser;
 
 import br.com.fiap.fmba.R;
 
+/**
+ * Active inicial utilizada comm tela de autenticação do usuário
+ */
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseAuth mAuth;
+    /**
+     * Firebase autenticator
+     */
+    private FirebaseAuth mAuth = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         txtSenha.setText(new String());
     }
 
+    /**
+     * Prepara as regras de execução do botão de efetivação do login
+     */
     private void preparaBotaoLogin() {
         super.findViewById(R.id.btnLogin).setOnClickListener(new View.OnClickListener() {
 
@@ -75,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
                             });
                 } catch (Exception e) {
                     txtUsuario.setText(new String());
+                    txtUsuario.setError("");
+                    txtSenha.setError("");
                 }
 
                 txtSenha.setText(new String());
