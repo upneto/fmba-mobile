@@ -42,7 +42,7 @@ public final class Encryptor {
         cipher.init(Cipher.ENCRYPT_MODE, key, spec);
         byte[] encrypted = cipher.doFinal(text.getBytes("UTF-8"));
         String encryptedText = new String(Base64.encode(encrypted, Base64.DEFAULT), "UTF-8");
-        return encryptedText;
+        return encryptedText.replaceAll("\n", "");
     }
 }
 
