@@ -14,12 +14,13 @@ import java.util.ArrayList;
 
 import br.com.fiap.fmba.R;
 import br.com.fiap.fmba.bin.usecase.model.OrdemServicoVO;
+import br.com.fiap.fmba.bin.usecase.ordemservico.OrdemServico;
 import br.com.fiap.fmba.ui.activity.adapter.ListaOrdemServicoAdapter;
 
 public class ListaOrdemServicoActivity extends AbstractActivity {
 
     private ListView listOrdemServico = null;
-    private GestaoOrdemServico ordemServico = null;
+    private OrdemServico ordemServico = null;
     private ListaOrdemServicoAdapter adapter;
 
     @Override
@@ -29,7 +30,7 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
         super.setTitle("Ordens de Serviço");
 
         this.listOrdemServico = findViewById(R.id.listOrdemServico);
-        this.ordemServico = new GestaoOrdemServico(this);
+        this.ordemServico = new OrdemServico(this);
         this.adapter = new ListaOrdemServicoAdapter(this, new ArrayList<OrdemServicoVO>());
     }
 
@@ -59,10 +60,10 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
     private void preencheLista(Long codigo) {
         try {
             if(codigo != null) {
-                this.ordemServico.consultarPorPlaca(codigo, this.adapter);
+                this.ordemServico.consultarPor(codigo, this.adapter);
             }
             else {
-                this.ordemServico.consultarTodos(this.adapter);
+                this.ordemServico.consultarLista(this.adapter);
             }
             this.listOrdemServico.setAdapter(this.adapter);
             this.listOrdemServico.setOnItemClickListener(new AdapterView.OnItemClickListener() {

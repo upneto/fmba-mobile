@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 
 import br.com.fiap.fmba.R;
+import br.com.fiap.fmba.bin.usecase.ordemservico.OrdemServico;
 
 public class DetalheOrdemServicoActivity extends AbstractActivity {
 
@@ -18,7 +19,7 @@ public class DetalheOrdemServicoActivity extends AbstractActivity {
     private TextView txtDataInicio = null;
     private TextView txtDataFinal = null;
 
-    private GestaoOrdemServico ordemServico = null;
+    private OrdemServico ordemServico = null;
 
     private AlertDialog.Builder confirmDialog;
 
@@ -34,7 +35,7 @@ public class DetalheOrdemServicoActivity extends AbstractActivity {
         this.txtDataInicio = findViewById(R.id.txtDataInicio);
         this.txtDataFinal = findViewById(R.id.txtDataFinal);
 
-        this.ordemServico = new GestaoOrdemServico(this);
+        this.ordemServico = new OrdemServico(this);
 
         this.buildDeleteButton();
         this.buildConfirmDialog();

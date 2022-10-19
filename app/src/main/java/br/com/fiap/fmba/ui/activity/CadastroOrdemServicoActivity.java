@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import br.com.fiap.fmba.R;
 import br.com.fiap.fmba.bin.usecase.model.OrdemServicoVO;
+import br.com.fiap.fmba.bin.usecase.ordemservico.OrdemServico;
 
 public class CadastroOrdemServicoActivity extends AbstractActivity {
 
@@ -16,7 +17,7 @@ public class CadastroOrdemServicoActivity extends AbstractActivity {
     private EditText txtDataInicio = null;
     private EditText txtDataFinal = null;
 
-    private GestaoOrdemServico ordemServico = null;
+    private OrdemServico ordemServico = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class CadastroOrdemServicoActivity extends AbstractActivity {
         this.txtDataFinal = findViewById(R.id.txtNewDataFim);
         this.txtDataFinal.addTextChangedListener(super.getDateMask("##/##/####", txtDataFinal));
 
-        this.ordemServico = new GestaoOrdemServico(this);
+        this.ordemServico = new OrdemServico(this);
 
         this.buildBotaoCadastrar();
     }
@@ -48,7 +49,7 @@ public class CadastroOrdemServicoActivity extends AbstractActivity {
                 ordem.setDataInicio(txtDataInicio.getText().toString());
                 ordem.setDataFinal(txtDataFinal.getText().toString());
                 try {
-                    ordemServico.incluir(ordem);
+                    ordemServico.inserir(ordem);
                 } catch (Exception e) {
                     Toast.makeText(CadastroOrdemServicoActivity.this, e.getMessage(),
                             Toast.LENGTH_SHORT).show();
