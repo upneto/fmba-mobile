@@ -1,11 +1,17 @@
 package br.com.fiap.fmba.ui.activity;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import br.com.fiap.fmba.R;
+import br.com.fiap.fmba.bin.service.LoginService;
+import br.com.fiap.fmba.bin.service.payload.LoginRequestPayload;
+import br.com.fiap.fmba.bin.service.payload.LoginResponsePayload;
 import br.com.fiap.fmba.bin.usecase.model.OrdemServicoVO;
 import br.com.fiap.fmba.bin.usecase.ordemservico.OrdemServico;
 
@@ -48,13 +54,38 @@ public class CadastroOrdemServicoActivity extends AbstractActivity {
                 ordem.setNomeCliente(txtCliente.getText().toString());
                 ordem.setDataInicio(txtDataInicio.getText().toString());
                 ordem.setDataFinal(txtDataFinal.getText().toString());
-                try {
-                    ordemServico.inserir(ordem);
-                } catch (Exception e) {
-                    Toast.makeText(CadastroOrdemServicoActivity.this, e.getMessage(),
-                            Toast.LENGTH_SHORT).show();
-                }
+
+                // Executa
+                (new CadastroAsyncTask()).execute(ordem);
             }
         });
+    }
+
+    /**
+     * Executa login assincrono
+     */
+    private class CadastroAsyncTask extends AsyncTask<OrdemServicoVO, Integer, OrdemServicoVO> {
+
+        private OrdemServico ordemServico = new OrdemServico(CadastroOrdemServicoActivity.this);
+
+        @Override
+        protected OrdemServicoVO doInBackground(OrdemServicoVO... ordemServicoVOS) {
+            Log.i("AsyncTask", "AsyncTask Thread: " + Thread.currentThread().getName());
+            OrdemServicoVO request = ordemServicoVOS[0];
+            try {
+                this.ordemServico.inserir(request);
+            } catch (Exception e) {
+                Toast.makeText(CadastroOrdemServicoActivity.this, "Não foi possível realizar a operação!", Toast.LENGTH_LONG).show();
+            }
+            return request;
+        }
+
+        @Override
+        protected void onPostExecute(OrdemServicoVO ordemServicoVO) {
+            if(ordemServicoVO != null) {
+                startActivity(new Intent(CadastroOrdemServicoActivity.this, ListaOrdemServicoActivity.class));
+                Toast.makeText(CadastroOrdemServicoActivity.this, "Operação realizada com sucesso!", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }

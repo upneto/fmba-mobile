@@ -42,6 +42,8 @@ public class ListaOrdemServicoAdapter extends ArrayAdapter<OrdemServicoVO> {
             viewHolder = new ViewHolder();
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.ordem_servico_row_item, parent, false);
+
+            viewHolder.txtCodigoOrdemServico = (TextView) convertView.findViewById(R.id.txtCodigoOrdemServico);
             viewHolder.txtPlacaOrdemServico = (TextView) convertView.findViewById(R.id.txtPlacaOrdemServico);
             viewHolder.txtVeiculoOrdemServico = (TextView) convertView.findViewById(R.id.txtVeiculoOrdemServico);
 
@@ -52,6 +54,7 @@ public class ListaOrdemServicoAdapter extends ArrayAdapter<OrdemServicoVO> {
 
         lastPosition = position;
 
+        viewHolder.txtCodigoOrdemServico.setText(dataModel.getCodigo().toString());
         viewHolder.txtPlacaOrdemServico.setText(dataModel.getPlaca());
         viewHolder.txtVeiculoOrdemServico.setText(dataModel.getVeiculo());
 

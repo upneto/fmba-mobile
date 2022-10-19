@@ -10,21 +10,33 @@
     android:background="#ffffff" >
 
     <TextView
-        android:id="@+id/txtPlacaOrdemServico"
-        android:layout_width="80dp"
+        android:id="@+id/txtCodigoOrdemServico"
+        android:layout_width="60dp"
         android:layout_height="0dp"
         android:layout_alignParentTop="true"
-        android:text="Placa"
+        android:text="@string/numero"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtPlacaOrdemServico"
+        android:layout_width="60dp"
+        android:layout_height="19dp"
+        android:layout_below="@+id/txtCodigoOrdemServico"
+        android:text="@string/placa"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txtCodigoOrdemServico"
+        app:layout_constraintStart_toEndOf="@+id/txtCodigoOrdemServico"
+        app:layout_constraintTop_toTopOf="@+id/txtCodigoOrdemServico"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtVeiculoOrdemServico"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@+id/txtPlacaOrdemServico"
-        android:text="Veiculo"
+        android:text="@string/veiculo"
         android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="@+id/txtPlacaOrdemServico"
         app:layout_constraintEnd_toEndOf="parent"
