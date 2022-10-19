@@ -13,9 +13,9 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.bin.usecase.ordemservico.OrdemServico;
+import br.com.fiap.fmba.bin.usecase.model.OrdemServicoVO;
 
-public class ListaOrdemServicoAdapter extends ArrayAdapter<OrdemServico> {
+public class ListaOrdemServicoAdapter extends ArrayAdapter<OrdemServicoVO> {
 
     private int lastPosition = -1;
 
@@ -26,14 +26,14 @@ public class ListaOrdemServicoAdapter extends ArrayAdapter<OrdemServico> {
         TextView txtVeiculoOrdemServico;
     }
 
-    public ListaOrdemServicoAdapter(final Context context, final List<OrdemServico> ordensServico) {
+    public ListaOrdemServicoAdapter(final Context context, final List<OrdemServicoVO> ordensServico) {
         super(context, R.layout.ordem_servico_row_item, ordensServico);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        OrdemServico dataModel = getItem(position);
+        OrdemServicoVO dataModel = getItem(position);
 
         ViewHolder viewHolder;
 

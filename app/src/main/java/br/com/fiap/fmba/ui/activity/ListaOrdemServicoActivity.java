@@ -13,9 +13,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.bin.usecase.ordemservico.OrdemServico;
+import br.com.fiap.fmba.bin.usecase.model.OrdemServicoVO;
 import br.com.fiap.fmba.ui.activity.adapter.ListaOrdemServicoAdapter;
-import br.com.fiap.fmba.bin.usecase.ordemservico.GestaoOrdemServico;
 
 public class ListaOrdemServicoActivity extends AbstractActivity {
 
@@ -31,7 +30,7 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
 
         this.listOrdemServico = findViewById(R.id.listOrdemServico);
         this.ordemServico = new GestaoOrdemServico(this);
-        this.adapter = new ListaOrdemServicoAdapter(this, new ArrayList<OrdemServico>());
+        this.adapter = new ListaOrdemServicoAdapter(this, new ArrayList<OrdemServicoVO>());
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -71,7 +70,7 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    OrdemServico ordemServico = adapter.getItem(position);
+                    OrdemServicoVO ordemServico = adapter.getItem(position);
 
                     Intent intent = new Intent(ListaOrdemServicoActivity.this, DetalheOrdemServicoActivity.class);
                     intent.putExtra("VEICULO", ordemServico.getVeiculo());

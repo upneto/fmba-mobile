@@ -6,8 +6,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.bin.usecase.ordemservico.OrdemServico;
-import br.com.fiap.fmba.bin.usecase.ordemservico.GestaoOrdemServico;
+import br.com.fiap.fmba.bin.usecase.model.OrdemServicoVO;
 
 public class CadastroOrdemServicoActivity extends AbstractActivity {
 
@@ -42,7 +41,7 @@ public class CadastroOrdemServicoActivity extends AbstractActivity {
         findViewById(R.id.btnCadastrarOrdemServico).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                OrdemServico ordem = new OrdemServico();
+                OrdemServicoVO ordem = new OrdemServicoVO();
                 ordem.setVeiculo(txtVeiculo.getText().toString());
                 ordem.setPlaca(txtPlaca.getText().toString());
                 ordem.setNomeCliente(txtCliente.getText().toString());

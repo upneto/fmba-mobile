@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.bin.usecase.ordemservico.GestaoOrdemServico;
 
 public class DetalheOrdemServicoActivity extends AbstractActivity {
 
