@@ -3,14 +3,18 @@ package br.com.fiap.fmba.ui.activity;
 import androidx.annotation.RequiresApi;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.com.fiap.fmba.R;
 import br.com.fiap.fmba.bin.usecase.model.OrdemServicoVO;
@@ -47,17 +51,17 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
             @Override
             public void onClick(View view) {
 
-                // TODO FIXIT
-
-//                TextView txtPlaca = findViewById(R.id.txtFiltro);
-//                preencheLista(txtPlaca.getText().toString().isEmpty()
-//                        ? null
-//                        : txtPlaca.getText().toString());
+                TextView txtPlaca = findViewById(R.id.txtFiltro);
+                Integer codigo = txtPlaca.getText().toString() != null && !txtPlaca.getText().toString().isEmpty()
+                        ? Integer.parseInt(txtPlaca.getText().toString())
+                        : 0;
+                // Executa consulta
+                (new PesquisarAsyncTask()).execute(codigo);
             }
         });
     }
 
-    private void preencheLista(Long codigo) {
+    private void preencheLista(Integer codigo) {
         try {
             if(codigo != null) {
                 this.ordemServico.consultarPor(codigo, this.adapter);
@@ -86,6 +90,26 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
 
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * Executa login assincrono
+     */
+    private class PesquisarAsyncTask extends AsyncTask<Integer, Integer, Void> {
+
+        @Override
+        protected Void doInBackground(Integer... integers) {
+            Integer codigo = (integers != null || integers.length > 0) ? integers[0] : null;
+            try {
+                if(codigo != 0) {
+                    ordemServico.consultarPor(codigo, adapter);
+                }
+                else {
+                    ordemServico.consultarLista(adapter);
+                }
+            } catch (Exception e) { }
+            return null;
         }
     }
 }
