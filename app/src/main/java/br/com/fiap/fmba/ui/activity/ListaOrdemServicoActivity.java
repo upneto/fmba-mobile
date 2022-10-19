@@ -8,18 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
-import br.com.fiap.fmba.resources.exception.ServiceException;
+import br.com.fiap.fmba.bin.usecase.ordemservico.OrdemServico;
 import br.com.fiap.fmba.ui.activity.adapter.ListaOrdemServicoAdapter;
-import br.com.fiap.fmba.usecase.ordemservico.GestaoOrdemServico;
+import br.com.fiap.fmba.bin.usecase.ordemservico.GestaoOrdemServico;
 
 public class ListaOrdemServicoActivity extends AbstractActivity {
 
@@ -50,18 +46,21 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
 
             @Override
             public void onClick(View view) {
-                TextView txtPlaca = findViewById(R.id.txtFiltro);
-                preencheLista(txtPlaca.getText().toString().isEmpty()
-                        ? null
-                        : txtPlaca.getText().toString());
+
+                // TODO FIXIT
+
+//                TextView txtPlaca = findViewById(R.id.txtFiltro);
+//                preencheLista(txtPlaca.getText().toString().isEmpty()
+//                        ? null
+//                        : txtPlaca.getText().toString());
             }
         });
     }
 
-    private void preencheLista(String placa) {
+    private void preencheLista(Long codigo) {
         try {
-            if(placa != null) {
-                this.ordemServico.consultarPorPlaca(placa, this.adapter);
+            if(codigo != null) {
+                this.ordemServico.consultarPorPlaca(codigo, this.adapter);
             }
             else {
                 this.ordemServico.consultarTodos(this.adapter);

@@ -6,11 +6,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.usecase.ordemservico.GestaoOrdemServico;
+import br.com.fiap.fmba.bin.usecase.ordemservico.GestaoOrdemServico;
 
 public class DetalheOrdemServicoActivity extends AbstractActivity {
 
@@ -75,13 +74,14 @@ public class DetalheOrdemServicoActivity extends AbstractActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        try {
-                            ordemServico.excluir(txtPlaca.getText().toString());
-                        } catch (Exception e) {
-                            Toast.makeText(DetalheOrdemServicoActivity.this,
-                                    e.getMessage(),
-                                    Toast.LENGTH_SHORT).show();
-                        }
+                        // TODO FIXIT
+//                        try {
+//                            ordemServico.excluir(txtPlaca.getText().toString());
+//                        } catch (Exception e) {
+//                            Toast.makeText(DetalheOrdemServicoActivity.this,
+//                                    e.getMessage(),
+//                                    Toast.LENGTH_SHORT).show();
+//                        }
                         DetalheOrdemServicoActivity.this.finish();
                     }
                 }).setNegativeButton(R.string.nao, new DialogInterface.OnClickListener() {

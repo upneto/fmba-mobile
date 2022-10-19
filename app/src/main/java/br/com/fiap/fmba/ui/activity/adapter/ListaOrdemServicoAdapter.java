@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
+import br.com.fiap.fmba.bin.usecase.ordemservico.OrdemServico;
 
 public class ListaOrdemServicoAdapter extends ArrayAdapter<OrdemServico> {
 

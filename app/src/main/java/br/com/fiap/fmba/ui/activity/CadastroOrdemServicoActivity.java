@@ -6,8 +6,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.usecase.ordemservico.OrdemServico;
-import br.com.fiap.fmba.usecase.ordemservico.GestaoOrdemServico;
+import br.com.fiap.fmba.bin.usecase.ordemservico.OrdemServico;
+import br.com.fiap.fmba.bin.usecase.ordemservico.GestaoOrdemServico;
 
 public class CadastroOrdemServicoActivity extends AbstractActivity {
 

@@ -8,20 +8,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 import br.com.fiap.fmba.R;
-import br.com.fiap.fmba.service.LoginService;
-import br.com.fiap.fmba.service.payload.LoginRequestPayload;
-import br.com.fiap.fmba.service.payload.LoginResponsePayload;
+import br.com.fiap.fmba.bin.service.LoginService;
+import br.com.fiap.fmba.bin.service.payload.LoginRequestPayload;
+import br.com.fiap.fmba.bin.service.payload.LoginResponsePayload;
 
 /**
  * Active inicial utilizada comm tela de autenticação do usuário
