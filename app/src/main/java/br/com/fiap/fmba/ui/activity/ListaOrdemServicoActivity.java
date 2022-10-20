@@ -42,9 +42,12 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        this.preencheLista(null);
         this.preparaBotaoFiltro();
+        this.preencheLista();
+
+        (new PesquisarAsyncTask()).execute();
     }
+
     private void preparaBotaoFiltro() {
         findViewById(R.id.btnFiltro).setOnClickListener(new View.OnClickListener() {
 
@@ -61,55 +64,47 @@ public class ListaOrdemServicoActivity extends AbstractActivity {
         });
     }
 
-    private void preencheLista(Integer codigo) {
-        try {
-            if(codigo != null) {
-                this.ordemServico.consultarPor(codigo, this.adapter);
+    private void preencheLista() {
+        this.listOrdemServico.setAdapter(this.adapter);
+        this.listOrdemServico.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                OrdemServicoVO ordemServico = adapter.getItem(position);
+
+                Intent intent = new Intent(ListaOrdemServicoActivity.this, DetalheOrdemServicoActivity.class);
+                intent.putExtra("VEICULO", ordemServico.getVeiculo());
+                intent.putExtra("PLACA", ordemServico.getPlaca());
+                intent.putExtra("CLIENTE", ordemServico.getNomeCliente());
+                intent.putExtra("DATA_INICIO", ordemServico.getDataInicio());
+                intent.putExtra("DATA_FINAL", ordemServico.getDataFinal());
+
+                startActivity(intent);
             }
-            else {
-                this.ordemServico.consultarLista(this.adapter);
-            }
-            this.listOrdemServico.setAdapter(this.adapter);
-            this.listOrdemServico.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    OrdemServicoVO ordemServico = adapter.getItem(position);
-
-                    Intent intent = new Intent(ListaOrdemServicoActivity.this, DetalheOrdemServicoActivity.class);
-                    intent.putExtra("VEICULO", ordemServico.getVeiculo());
-                    intent.putExtra("PLACA", ordemServico.getPlaca());
-                    intent.putExtra("CLIENTE", ordemServico.getNomeCliente());
-                    intent.putExtra("DATA_INICIO", ordemServico.getDataInicio());
-                    intent.putExtra("DATA_FINAL", ordemServico.getDataFinal());
-
-                    startActivity(intent);
-                }
-            });
-
-        } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-        }
+        });
     }
 
     /**
      * Executa login assincrono
      */
-    private class PesquisarAsyncTask extends AsyncTask<Integer, Integer, Void> {
+    private class PesquisarAsyncTask extends AsyncTask<Integer, Integer, Boolean> {
 
         @Override
-        protected Void doInBackground(Integer... integers) {
-            Integer codigo = (integers != null || integers.length > 0) ? integers[0] : null;
+        protected Boolean doInBackground(Integer... integers) {
+            Boolean success = false;
+            Integer codigo = (integers != null && integers.length > 0) ? integers[0] : 0;
             try {
                 if(codigo != 0) {
                     ordemServico.consultarPor(codigo, adapter);
+                    success = true;
                 }
                 else {
                     ordemServico.consultarLista(adapter);
+                    success = true;
                 }
             } catch (Exception e) { }
-            return null;
+            return success;
         }
     }
 }
